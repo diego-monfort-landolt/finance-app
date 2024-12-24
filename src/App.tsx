@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import PercentageChart from './components/PercentageChart';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
+
 
 interface Transaction {
   id: number;
@@ -19,6 +22,7 @@ const App: React.FC = () => {
   const [amount, setAmount] = useState<number | undefined>(undefined);
   const [type, setType] = useState<'income' | 'expense'>('income');
   const [comment, setComment] = useState('');
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     localStorage.setItem('transactions', JSON.stringify(transactions));
@@ -57,9 +61,12 @@ const incomePercentage = totalAmount ? (totalIncome / totalAmount) * 100 : 0;
 const expensesPercentage = totalAmount ? (totalExpenses / totalAmount) * 100 : 0;
 
   return (
-    <div className="App">
+    <div className={`App ${darkMode ? 'dark-mode' : ''}`}>
       <div className="content">
         <h1>Finanz-Tracker</h1>
+        <button className="dark-mode-toggle" onClick={() => setDarkMode(!darkMode)}>
+          <FontAwesomeIcon icon={darkMode ? faSun : faMoon} />
+        </button>
         <div className="input-group">
           <input
             type="text"
