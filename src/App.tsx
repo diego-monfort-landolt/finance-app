@@ -45,10 +45,13 @@ const App: React.FC = () => {
     setTransactions([]);
     localStorage.removeItem('transactions');
   };
-
   const totalIncome = transactions.filter(t => t.type === 'income').reduce((acc, t) => acc + t.amount, 0);
-  const totalExpenses = transactions.filter(t => t.type === 'expense').reduce((acc, t) => acc + t.amount, 0);
-  const balance = totalIncome - totalExpenses;
+const totalExpenses = transactions.filter(t => t.type === 'expense').reduce((acc, t) => acc + t.amount, 0);
+const balance = totalIncome - totalExpenses;
+
+ const totalAmount = totalIncome + totalExpenses;
+  const incomePercentage = totalAmount ? (totalIncome / totalAmount) * 100 : 0;
+  const expensesPercentage = totalAmount ? (totalExpenses / totalAmount) * 100 : 0;
 
   return (
     <div className="App">
