@@ -1,40 +1,93 @@
-import React, { useState } from 'react';
-import TransactionForm from './components/TransactionForm';
-import TransactionList from './components/TransactionList';
-import Balance from './components/Balance';
-import PercentageChart from './components/PercentageChart';
+// filepath: /C:/Users/lando/Desktop/WorkSpace/finance-app/src/App.tsx
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import PercentageChart from './components/PercentageChart';
 
-// Definiere die Eigenschaften für die Transaktionen
 interface Transaction {
   id: number;
   description: string;
   amount: number;
+  type: 'income' | 'expense';
+  comment: string;
 }
 
-// Hauptkomponente der App
 const App: React.FC = () => {
-  const [transactions, setTransactions] = useState<Transaction[]>([]); // Zustand für die Transaktionen
+  const [transactions, setTransactions] = useState<Transaction[]>(() => {
+    const savedTransactions = localStorage.getItem('transactions');
+    return savedTransactions ? JSON.parse(savedTransactions) : [];
+  });
+  const [description, setDescription] = useState('');
+  const [amount, setAmount] = useState<number | undefined>(undefined);
+  const [type, setType] = useState<'income' | 'expense'>('income');
+  const [comment, setComment] = useState('');
 
-  // Funktion zum Hinzufügen einer Transaktion
-  const addTransaction = (transaction: { description: string; amount: number }) => {
-    const newTransaction = { ...transaction, id: Date.now() }; // Neue Transaktion erstellen
-    setTransactions([newTransaction, ...transactions]); // Transaktion hinzufügen
+  useEffect(() => {
+    localStorage.setItem('transactions', JSON.stringify(transactions));
+  }, [transactions]);
+
+  const addTransaction = () => {
+    if (amount !== undefined && type && amount !== 0) {
+      const newTransaction = { id: Date.now(), description, amount, type, comment };
+      setTransactions([newTransaction, ...transactions]);
+      setDescription('');
+      setAmount(undefined);
+      setType('income');
+      setComment('');
+    } else {
+      alert('Bitte füllen Sie alle Pflichtfelder aus.');
+    }
   };
 
-  // Funktion zum Löschen einer Transaktion
   const deleteTransaction = (id: number) => {
-    setTransactions(transactions.filter((transaction) => transaction.id !== id)); // Transaktion löschen
+    setTransactions(transactions.filter((transaction) => transaction.id !== id));
   };
+
+  const resetTransactions = () => {
+    setTransactions([]);
+    localStorage.removeItem('transactions');
+  };
+
+  const totalIncome = transactions.filter(t => t.type === 'income').reduce((acc, t) => acc + t.amount, 0);
+  const totalExpenses = transactions.filter(t => t.type === 'expense').reduce((acc, t) => acc + t.amount, 0);
+  const balance = totalIncome - totalExpenses;
 
   return (
     <div className="App">
       <div className="content">
         <h1>Finanz-Tracker</h1>
-        <TransactionForm addTransaction={addTransaction} />
-        <Balance transactions={transactions} />
+        <div className="input-group">
+          <input
+            type="text"
+            placeholder="Beschreibung"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+          <input
+            type="number"
+            placeholder="Betrag"
+            value={amount !== undefined ? amount : ''}
+            onChange={(e) => setAmount(Number(e.target.value))}
+          />
+          <select value={type} onChange={(e) => setType(e.target.value as 'income' | 'expense')}>
+            <option value="income">Einnahme</option>
+            <option value="expense">Ausgabe</option>
+          </select>
+          <input
+            type="text"
+            placeholder="Kommentar"
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+          />
+          <button onClick={addTransaction}>Transaktion hinzufügen</button>
+          <button onClick={resetTransactions} style={{ marginTop: '10px', backgroundColor: 'red' }}>Alle Transaktionen zurücksetzen</button>
+        </div>
+        <div className="summary">
+          <h2>Zusammenfassung</h2>
+          <p>Einnahmen: <span className="amount income">{totalIncome.toFixed(2)} EUR</span></p>
+          <p>Ausgaben: <span className="amount expense">{totalExpenses.toFixed(2)} EUR</span></p>
+          <p>Saldo: <span className="amount">{balance.toFixed(2)} EUR</span></p>
+        </div>
         <PercentageChart transactions={transactions} />
-        <TransactionList transactions={transactions} deleteTransaction={deleteTransaction} />
       </div>
     </div>
   );
