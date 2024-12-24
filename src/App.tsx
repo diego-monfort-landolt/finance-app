@@ -71,12 +71,6 @@ const App: React.FC = () => {
             <option value="income">Einnahme</option>
             <option value="expense">Ausgabe</option>
           </select>
-          <input
-            type="text"
-            placeholder="Kommentar"
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
-          />
           <button onClick={addTransaction}>Transaktion hinzufügen</button>
           <button onClick={resetTransactions} style={{ marginTop: '10px', backgroundColor: 'red' }}>Alle Transaktionen zurücksetzen</button>
         </div>
