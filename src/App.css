@@ -11,7 +11,6 @@ body {
   box-sizing: border-box; /* Bezieht Padding und Border in die Breite und Höhe ein */
   overflow-y: auto; /* Ermöglicht vertikales Scrollen bei Bedarf */
 }
-
 .App {
   width: 100%;
   margin: 120px auto; /* Fügt oben und unten einen Mindestabstand von 20px hinzu */
