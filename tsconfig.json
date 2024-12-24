@@ -1,4 +1,4 @@
-// filepath: /C:/Users/lando/Desktop/WorkSpace/finance-app/tsconfig.json
+
 {
   "compilerOptions": {
     "target": "esnext",

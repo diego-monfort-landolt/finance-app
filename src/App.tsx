@@ -1,4 +1,3 @@
-// filepath: /C:/Users/lando/Desktop/WorkSpace/finance-app/src/App.tsx
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import PercentageChart from './components/PercentageChart';

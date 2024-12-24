@@ -1,4 +1,3 @@
-// filepath: /C:/Users/lando/Desktop/WorkSpace/finance-app/src/components/PercentageChart.tsx
 import React from 'react';
 import { PieChart, Pie, Cell, Tooltip } from 'recharts';
 
