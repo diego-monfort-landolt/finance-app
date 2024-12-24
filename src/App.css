@@ -52,6 +52,7 @@ h1 {
   color: white;
   border: none;
   cursor: pointer;
+  margin-top: 10px;
 }
 
 .input-group button:hover {
