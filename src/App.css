@@ -141,6 +141,7 @@ h1 {
 .App.dark-mode .summary {
   background-color: #3a3a3a; /* Dunkles Grau für den Hintergrund der Zusammenfassung */
   color: #ffffff; /* Weiß für den Text */
+  box-shadow: 0 0 7px #ddd9d9;
 }
 /* Media Queries für verschiedene Geräte */
 @media (max-width: 1024px) { /* iPad, Tablets */
