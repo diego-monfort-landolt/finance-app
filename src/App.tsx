@@ -30,10 +30,12 @@ const App: React.FC = () => {
     localStorage.setItem('transactions', JSON.stringify(transactions));
   }, [transactions]);
 
+  // Funktion zum Hinzufügen einer neuen Transaktion
   const addTransaction = () => {
     if (amount !== undefined && type && amount !== 0) {
       const newTransaction = { id: Date.now(), description, amount, type, comment };
       setTransactions([newTransaction, ...transactions]);
+      // Zurücksetzen der Eingabefelder
       setDescription('');
       setAmount(undefined);
       setType('income');
@@ -43,6 +45,7 @@ const App: React.FC = () => {
     }
   };
 
+  // Funktion zum Löschen einer Transaktion
   const deleteTransaction = (id: number) => {
     setTransactions(transactions.filter((transaction) => transaction.id !== id));
   };
