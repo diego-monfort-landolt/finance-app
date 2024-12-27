@@ -49,6 +49,7 @@ h1 {
 
 .input-group button {
   background-color: blue;
+  box-shadow: 0 0 7px #4f4f4f;
   color: white;
   border: none;
   cursor: pointer;
@@ -57,6 +58,7 @@ h1 {
 
 .input-group button:hover {
   background-color: darkblue;
+  box-shadow: 0 0 7px #4f4f4f;
 }
 
 .chart-container {

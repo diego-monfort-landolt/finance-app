@@ -4,7 +4,7 @@ import PercentageChart from './components/PercentageChart';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 
-
+// Definieren der Schnittstelle für Transaktionen
 interface Transaction {
   id: number;
   description: string;
@@ -14,6 +14,7 @@ interface Transaction {
 }
 
 const App: React.FC = () => {
+  // Zustand für Transaktionen, initialisiert mit gespeicherten Daten aus dem lokalen Speicher
   const [transactions, setTransactions] = useState<Transaction[]>(() => {
     const savedTransactions = localStorage.getItem('transactions');
     return savedTransactions ? JSON.parse(savedTransactions) : [];
@@ -24,6 +25,7 @@ const App: React.FC = () => {
   const [comment, setComment] = useState('');
   const [darkMode, setDarkMode] = useState(false);
 
+  // Effekt, um Transaktionen im lokalen Speicher zu speichern, wenn sich die Transaktionen ändern
   useEffect(() => {
     localStorage.setItem('transactions', JSON.stringify(transactions));
   }, [transactions]);
