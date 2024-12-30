@@ -2,26 +2,25 @@
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  padding: 20px; /* Fügt oben, unten und an den Seiten Abstand hinzu */
+/* Fügt oben, unten und an den Seiten Abstand hinzu */
   display: flex;
   justify-content: center;
   align-items: flex-start; /* Ändert die vertikale Ausrichtung */
-  min-height: 100vh;
   background-color: #f4f4f4;
-  box-sizing: border-box; /* Bezieht Padding und Border in die Breite und Höhe ein */
-  overflow-y: auto; /* Ermöglicht vertikales Scrollen bei Bedarf */
+
 }
 
 /* Stile für das Haupt-App-Container */
 .App {
   width: 100%;
+  height: 100vh;
   max-width: 800px; /* Begrenze die maximale Breite */
-  margin: 120px auto; /* Fügt oben und unten einen Mindestabstand von 120px hinzu */
+  margin: 10px auto; /* Fügt oben und unten einen Mindestabstand von 120px hinzu */
   padding: 20px;
   background-color: white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  overflow-y: auto; 
+  overflow-y: auto;
 }
 
 /* Stile für den Inhalt innerhalb des App-Containers */
@@ -29,8 +28,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 150px;
-  margin-top: 260px;
 }
 
 /* Stile für die Hauptüberschrift */
