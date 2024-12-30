@@ -26,9 +26,11 @@ body {
 }
 
 .chart-container {
-  margin: 20px 0;
+  margin: 10px auto;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgb(245, 191, 191);
 }
 
 .chart-container:hover {
-  background-color: #e0f7fa;
+  background-color: #d2dfe0;
 }
