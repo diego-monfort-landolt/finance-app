@@ -4,6 +4,7 @@ import PercentageChart from './components/PercentageChart';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 
+
 interface Transaction {
   id: number;
   description: string;
