@@ -9,16 +9,20 @@ body {
   text-align: center;
   background-color: #f4f4f4;
   margin: 20px;
+  box-sizing: border-box;
 }
-
 .App {
   width: 100%;
-  max-width: 800px;
-  margin: 20px auto;
+  height: 100vh;
+  max-width: 800px; /* Begrenze die maximale Breite */
+  margin: 10px auto; /* Fügt oben und unten einen Mindestabstand von 10px hinzu */
   padding: 20px;
   background-color: white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
+  overflow-y: auto; /* Verhindert das Scrollen des Hintergrunds */
+  position: relative; /* Hinzugefügt, um den Dark-Mode-Toggle zu positionieren */
+  box-sizing: border-box; /* Padding und Border in die Gesamtbreite und -höhe einbeziehen */
 }
 
 .chart-container {
