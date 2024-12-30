@@ -4,7 +4,6 @@ import PercentageChart from './components/PercentageChart';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 
-// Definieren der Schnittstelle für Transaktionen
 interface Transaction {
   id: number;
   description: string;
@@ -24,11 +23,31 @@ const App: React.FC = () => {
   const [type, setType] = useState<'income' | 'expense'>('income');
   const [comment, setComment] = useState('');
   const [darkMode, setDarkMode] = useState(false);
+  const [analysis, setAnalysis] = useState<string>('');
+  const [improvements, setImprovements] = useState<string[]>([]);
+  const [showModal, setShowModal] = useState(false);
+  const [suggestion, setSuggestion] = useState('');
+
+  // Berechnung der Gesamteinnahmen, Gesamtausgaben und des Saldos
+  const totalIncome = transactions.filter(t => t.type === 'income').reduce((acc, t) => acc + t.amount, 0);
+  const totalExpenses = transactions.filter(t => t.type === 'expense').reduce((acc, t) => acc + t.amount, 0);
+  const balance = totalIncome - totalExpenses;
 
   // Effekt, um Transaktionen im lokalen Speicher zu speichern, wenn sich die Transaktionen ändern
   useEffect(() => {
     localStorage.setItem('transactions', JSON.stringify(transactions));
   }, [transactions]);
+
+  // Effekt zur Anzeige von Vorschlägen basierend auf dem Saldo
+  useEffect(() => {
+    if (balance > 0) {
+      setSuggestion('Super! Du bist im Plus. Überlege, wie du dein Geld weiter investieren kannst.');
+    } else if (balance < 0) {
+      setSuggestion('Achtung! Du bist im Minus. Überlege, wie du deine Ausgaben reduzieren kannst.');
+    } else {
+      setSuggestion('');
+    }
+  }, [balance]);
 
   // Funktion zum Hinzufügen einer neuen Transaktion
   const addTransaction = () => {
@@ -50,28 +69,56 @@ const App: React.FC = () => {
     setTransactions(transactions.filter((transaction) => transaction.id !== id));
   };
 
+  // Funktion zum Zurücksetzen aller Transaktionen
   const resetTransactions = () => {
     setTransactions([]);
     localStorage.removeItem('transactions');
   };
 
-// Berechnung der Gesamtmenge und Prozentsätze inkl text der Beschreibung
+  // Funktion zur Analyse der Finanzen und Generierung von Finanztipps
+  const analyzeFinances = () => {
+    if (transactions.length === 0) {
+      setAnalysis('Keine Transaktionen vorhanden. Bitte fügen Sie Transaktionen hinzu, um eine Analyse durchzuführen.');
+      return;
+    }
 
-const totalIncome = transactions.filter(t => t.type === 'income').reduce((acc, t) => acc + t.amount, 0);
-const totalExpenses = transactions.filter(t => t.type === 'expense').reduce((acc, t) => acc + t.amount, 0);
-const balance = totalIncome - totalExpenses;
+    const totalIncome = transactions.filter(t => t.type === 'income').reduce((acc, t) => acc + t.amount, 0);
+    const totalExpenses = transactions.filter(t => t.type === 'expense').reduce((acc, t) => acc + t.amount, 0);
+    const balance = totalIncome - totalExpenses;
 
-const totalAmount = totalIncome + totalExpenses;
-const incomePercentage = totalAmount ? (totalIncome / totalAmount) * 100 : 0;
-const expensesPercentage = totalAmount ? (totalExpenses / totalAmount) * 100 : 0;
+    let advice = 'Hier sind einige Finanztipps basierend auf deinen Transaktionen:\n';
+
+    if (totalIncome > totalExpenses) {
+      advice += 'Gut gemacht! Deine Einnahmen übersteigen deine Ausgaben. Versuche, einen Teil deiner Einnahmen zu sparen.\n';
+    } else if (totalIncome < totalExpenses) {
+      advice += 'Achtung! Deine Ausgaben übersteigen deine Einnahmen. Versuche, deine Ausgaben zu reduzieren.\n';
+    } else {
+      advice += 'Deine Einnahmen und Ausgaben sind ausgeglichen. Versuche, deine Ausgaben zu reduzieren, um etwas zu sparen.\n';
+    }
+
+    if (balance < 0) {
+      advice += 'Du hast ein negatives Guthaben. Überlege, wie du deine Ausgaben reduzieren oder deine Einnahmen erhöhen kannst.\n';
+    } else if (balance > 0 && balance < 100) {
+      advice += 'Du hast ein kleines Guthaben. Versuche, es weiter zu erhöhen.\n';
+    } else if (balance >= 100) {
+      advice += 'Du hast ein gutes Guthaben. Überlege, wie du es investieren kannst.\n';
+    }
+
+    setAnalysis(advice);
+  };
+
+  // Funktion zum Entfernen einer Verbesserung
+  const removeImprovement = (index: number) => {
+    setImprovements(improvements.filter((_, i) => i !== index));
+  };
 
   return (
     <div className={`App ${darkMode ? 'dark-mode' : ''}`}>
+      <button className="dark-mode-toggle" onClick={() => setDarkMode(!darkMode)}>
+        <FontAwesomeIcon icon={darkMode ? faSun : faMoon} className="icon" />
+      </button>
       <div className="content">
         <h1>Finanz-Tracker</h1>
-        <button className="dark-mode-toggle" onClick={() => setDarkMode(!darkMode)}>
-          <FontAwesomeIcon icon={darkMode ? faSun : faMoon} />
-        </button>
         <div className="input-group">
           <input
             type="text"
@@ -91,6 +138,7 @@ const expensesPercentage = totalAmount ? (totalExpenses / totalAmount) * 100 : 0
           </select>
           <button onClick={addTransaction}>Transaktion hinzufügen</button>
           <button onClick={resetTransactions} style={{ marginTop: '10px', backgroundColor: 'red' }}>Alle Transaktionen zurücksetzen</button>
+          <button onClick={analyzeFinances} style={{ marginTop: '10px', backgroundColor: 'green' }}>Finanzen analysieren</button>
         </div>
         <div className="summary">
           <h2>Zusammenfassung</h2>
@@ -98,7 +146,32 @@ const expensesPercentage = totalAmount ? (totalExpenses / totalAmount) * 100 : 0
           <p>Ausgaben: <span className="amount expense">{totalExpenses.toFixed(2)} EUR</span></p>
           <p>Saldo: <span className="amount">{balance.toFixed(2)} EUR</span></p>
         </div>
+        {analysis && (
+          <div className={`analysis ${balance >= 0 ? 'positive' : 'negative'}`}>
+            <h2>Finanzanalyse</h2>
+            <p>{analysis}</p>
+          </div>
+        )}
         <PercentageChart transactions={transactions} />
+        {improvements.length > 0 && (
+          <div className={`improvements ${balance >= 0 ? 'positive' : 'negative'}`}>
+            <h3>Verbesserungen</h3>
+            {improvements.map((improvement, index) => (
+              <div key={index} className="improvement">
+                <p>{improvement}</p>
+                <button onClick={() => removeImprovement(index)}>X</button>
+              </div>
+            ))}
+          </div>
+        )}
+        {showModal && (
+          <div className="modal">
+            <div className="modal-content">
+              <span className="close" onClick={() => setShowModal(false)}>&times;</span>
+              <p>{suggestion}</p>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
