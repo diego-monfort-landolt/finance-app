@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import PercentageChart from './components/PercentageChart';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
+import { faSun, faMoon, faFileExport } from '@fortawesome/free-solid-svg-icons';
+import { exportToCSV } from './components/ExportCSV';
 
-interface Transaction {
+export interface Transaction {
   id: number;
   description: string;
   amount: number;
@@ -140,6 +141,7 @@ const App: React.FC = () => {
           <button onClick={addTransaction}>Transaktion hinzufügen</button>
           <button onClick={resetTransactions} style={{ marginTop: '10px', backgroundColor: 'red' }}>Alle Transaktionen zurücksetzen</button>
           <button onClick={analyzeFinances} style={{ marginTop: '10px', backgroundColor: 'green' }}>Finanzen analysieren</button>
+          <button className="export-button" onClick={() => exportToCSV(transactions)} style={{ marginTop: '10px', marginLeft: 'auto', padding: '10px', borderRadius: '8px', backgroundColor: '#007bff', color: 'white' }}> <FontAwesomeIcon icon={faFileExport} /> Exportieren </button>
         </div>
         <div className="summary">
           <h2>Zusammenfassung</h2>
