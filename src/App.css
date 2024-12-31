@@ -253,13 +253,55 @@ h1 {
 
 /* Media Queries für verschiedene Geräte */
 @media (max-width: 1024px) { /* iPad, Tablets */
-  body {
-    padding: 5vh 5vw; /* Fügt oben, unten und an den Seiten Abstand hinzu */
+  .App {
+    padding: 15px;
+  }
+  .input-group {
+    max-width: 100%;
+  }
+  .summary {
+    max-width: 100%;
+  }
+  .analysis {
+    max-width: 100%;
+  }
+  .improvements {
+    max-width: 100%;
   }
 }
 
 @media (max-width: 768px) { /* Mobile Geräte */
-  body {
-    padding: 5vh 5vw; /* Fügt oben, unten und an den Seiten Abstand hinzu */
+  .App {
+    padding: 10px;
+  }
+  .input-group {
+    max-width: 90%;
+  }
+  .summary {
+    max-width: 90%;
+  }
+  .analysis {
+    max-width: 90%;
+  }
+  .improvements {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 358px) { /* Sehr kleine Mobile Geräte */
+  .App {
+    padding: 5px;
+  }
+  .input-group {
+    max-width: 90%;
+  }
+  .summary {
+    max-width: 90%;
+  }
+  .analysis {
+    max-width: 90%;
+  }
+  .improvements {
+    max-width: 90%;
   }
 }
