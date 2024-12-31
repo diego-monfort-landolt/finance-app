@@ -137,8 +137,11 @@ h1 {
 .App.dark-mode .input-group input,
 .App.dark-mode .input-group select,
 .App.dark-mode .input-group button {
-  background-color: #444444; /* Etwas helleres Grau für Eingabefelder und Buttons */
+  background-color: #504e70; /* Etwas helleres Grau für Eingabefelder und Buttons */
   color: #ffffff; /* Weiß für den Text */
+}
+.App.dark-mode .input-group button {
+  background-color: blue;
 }
 
 /* Stile für die Zusammenfassung im Dunkelmodus */
