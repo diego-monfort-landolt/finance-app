@@ -6,5 +6,5 @@ export default defineConfig({
   server: {
     open: true,
   },
-  base:'https://diego-monfort-landolt.github.io/finance',
+  base:'https://diego-monfort-landolt.github.io/finance-app/',
 });
