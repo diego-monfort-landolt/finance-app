@@ -15,7 +15,6 @@ export const exportToCSV = (transactions: Transaction[]) => {
     ];
     csvRows.push(values.join(','));
   });
-
   const csvContent = csvRows.join('\n');
   const blob = new Blob([csvContent], { type: 'text/csv' });
   const url = window.URL.createObjectURL(blob);
