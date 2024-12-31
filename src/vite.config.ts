@@ -3,8 +3,5 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  server: {
-    open: true,
-  },
   base:'https://diego-monfort-landolt.github.io/finance-app/',
 });
