@@ -122,7 +122,6 @@ const App: React.FC = () => {
       
       <div className="content">
         <h1>Finanz-Tracker</h1>
-        
         <div className="input-group">
           <input
             type="text"
