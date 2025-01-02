@@ -119,10 +119,10 @@ const App: React.FC = () => {
       <button className="dark-mode-toggle" onClick={() => setDarkMode(!darkMode)}>
         <FontAwesomeIcon icon={darkMode ? faSun : faMoon} className="icon" />
       </button>
-      // Hauptinhalt der App
+      
       <div className="content">
         <h1>Finanz-Tracker</h1>
-        // Eingabegruppe für Transaktionsdetails
+        
         <div className="input-group">
           <input
             type="text"
@@ -130,21 +130,20 @@ const App: React.FC = () => {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
-          // Eingabefeld für den Betrag der Transaktion
           <input
             type="number"
             placeholder="Betrag"
             value={amount !== undefined ? amount : ''}
             onChange={(e) => setAmount(Number(e.target.value))}
           />
-          // Dropdown zur Auswahl des Transaktionstyps (Einnahme oder Ausgabe)
+         
           <select value={type} onChange={(e) => setType(e.target.value as 'income' | 'expense')}>
             <option value="income">Einnahme</option>
             <option value="expense">Ausgabe</option>
           </select>
-          // Button zum Hinzufügen einer neuen Transaktion
+         
           <button onClick={addTransaction}>Transaktion hinzufügen</button>
-          // Button zum Zurücksetzen aller Transaktionen
+         
           <button onClick={resetTransactions} style={{ marginTop: '10px', backgroundColor: 'red' }}>Alle Transaktionen zurücksetzen</button>
           <button onClick={analyzeFinances} style={{ marginTop: '10px', backgroundColor: 'green' }}>Finanzen analysieren</button>
           <button className="export-button" onClick={() => exportToCSV(transactions)} style={{ marginTop: '10px', marginLeft: 'auto', padding: '10px', borderRadius: '8px', backgroundColor: '#007bff', color: 'white' }}> <FontAwesomeIcon icon={faFileExport} /> Exportieren </button>
@@ -173,7 +172,7 @@ const App: React.FC = () => {
             ))}
           </div>
         )}
-        // Bedingte Anzeige des Modals mit Vorschlägen
+       
         {showModal && (
           <div className="modal">
             <div className="modal-content">
