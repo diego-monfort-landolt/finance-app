@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import Wishlist from './components/Wishlist';
 import PercentageChart from './components/PercentageChart';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon, faFileExport } from '@fortawesome/free-solid-svg-icons';
@@ -114,6 +115,7 @@ const App: React.FC = () => {
     setImprovements(improvements.filter((_, i) => i !== index));
   };
 
+  
   return (
     <div className={`App ${darkMode ? 'dark-mode' : ''}`}>
       <button className="dark-mode-toggle" onClick={() => setDarkMode(!darkMode)}>
@@ -159,7 +161,7 @@ const App: React.FC = () => {
           style={{ marginTop: '10px', marginLeft: 'auto', padding: '10px', borderRadius: '8px', backgroundColor: '#007bff', color: 'white' }}> 
           <FontAwesomeIcon icon={faFileExport} /> 
           Exportieren 
-          </button>
+ome       </button>
         </div>
         <div className="summary">
           <h2>Zusammenfassung</h2>
@@ -194,6 +196,7 @@ const App: React.FC = () => {
             </div>
           </div>
         )}
+         <Wishlist balance={balance} /> {/* Wishlist-Komponente hinzugefügt */}
       </div>
     </div>
   );
