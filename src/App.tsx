@@ -196,7 +196,10 @@ ome       </button>
             </div>
           </div>
         )}
-         <Wishlist balance={balance} /> {/* Wishlist-Komponente hinzugefügt */}
+        <div className="wishlist-notification">
+          <p>Wunschliste hinzugefügt - wird demnächst freigeschaltet</p>
+        </div>
+        <Wishlist balance={balance} /> {/* Wishlist-Komponente hinzugefügt */}
       </div>
     </div>
   );

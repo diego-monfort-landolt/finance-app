@@ -255,6 +255,18 @@ h1 {
   text-decoration: none;
   cursor: pointer;
 }
+/* Stile für die Wunschliste-Benachrichtigung */
+.wishlist-notification {
+  margin: 20px auto;
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 5px;
+  background-color: #ffeb3b;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: #000;
+}
 
 /* Media Queries für verschiedene Geräte */
 @media (max-width: 1024px) { /* iPad, Tablets */
