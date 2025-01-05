@@ -118,10 +118,11 @@ const App: React.FC = () => {
   
   return (
     <div className={`App ${darkMode ? 'dark-mode' : ''}`}>
-      <button className="dark-mode-toggle" onClick={() => setDarkMode(!darkMode)}>
+      <div className="dark-mode-toggle-container">
+        <button className="dark-mode-toggle" onClick={() => setDarkMode(!darkMode)}>
         <FontAwesomeIcon icon={darkMode ? faSun : faMoon} className="icon" />
-      </button>
-      
+        </button>
+      </div>
       <div className="content">
         <h1>Finanz-Tracker</h1>
         <div className="input-group">

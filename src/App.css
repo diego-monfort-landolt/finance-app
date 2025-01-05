@@ -101,8 +101,8 @@ h1 {
 /* Hier Startet der Style des dunklen Modus */
 .dark-mode-toggle {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 25px;
+  right: 15%;
   background: none;
   border: none;
   color: inherit;
