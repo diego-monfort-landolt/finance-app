@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 interface TransactionFormProps {
   addTransaction: (transaction: { description: string; amount: number }) => void;
 }
-
 // Komponente für das Formular zum Hinzufügen von Transaktionen
 const TransactionForm: React.FC<TransactionFormProps> = ({ addTransaction }) => {
   const [description, setDescription] = useState(''); // Zustand für die Beschreibung
@@ -38,5 +37,4 @@ const TransactionForm: React.FC<TransactionFormProps> = ({ addTransaction }) => 
     </form>
   );
 };
-
 export default TransactionForm;

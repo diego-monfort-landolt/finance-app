@@ -1,11 +1,9 @@
 import React from 'react';
-
 // Definiere die Eigenschaften für das TransactionList-Props
 interface TransactionListProps {
   transactions: { id: number; description: string; amount: number }[];
   deleteTransaction: (id: number) => void;
 }
-
 // Komponente für die Liste der Transaktionen
 const TransactionList: React.FC<TransactionListProps> = ({ transactions, deleteTransaction }) => {
   return (
@@ -19,5 +17,4 @@ const TransactionList: React.FC<TransactionListProps> = ({ transactions, deleteT
     </ul>
   );
 };
-
 export default TransactionList;

@@ -61,5 +61,4 @@ const PercentageChart: React.FC<PercentageChartProps> = ({ transactions }) => {
     </div>
   );
 };
-
 export default PercentageChart;
