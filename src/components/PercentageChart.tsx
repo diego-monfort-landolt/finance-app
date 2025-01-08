@@ -71,7 +71,7 @@ const PercentageChart: React.FC<PercentageChartProps> = ({ transactions }) => {
           {transactionList.map(t => (
             <li key={t.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px', wordWrap: 'break-word' }}>
               <span style={{ flex: 1, textAlign: 'left',padding: '3px',borderRadius:'5px', borderBottom: t.type === 'income' ? '1px solid green' : '1px solid red', backgroundColor: t.type === 'income' ? 'rgba(40, 167, 69, 0.1)' : 'rgba(220, 53, 69, 0.1)' }}>{t.description} - {t.amount} €</span>
-              <button onClick={() => removeTransaction(t.id)} style={{ marginLeft: '10px', backgroundColor: '#dc3545', color: '#fff', border: 'none', borderRadius: '3px', cursor: 'pointer' }}>Entfernen</button>
+              <button onClick={() => removeTransaction(t.id)} style={{ marginLeft: '10px', padding:'5px', backgroundColor: t.type === 'income' ? '#28a745' : '#dc3545', color: '#fff', borderRadius: '3px', cursor: 'pointer', border: 'none' }}>Entfernen</button>
             </li>
           ))}
         </ul>
