@@ -2,6 +2,7 @@
 # Finanz-Tracker
 
 Dies ist eine einfache Finanz-Tracker-Anwendung, die es Benutzern ermöglicht, ihre Einnahmen und Ausgaben zu verfolgen. Die Anwendung bietet eine Übersicht über die Gesamteinnahmen, Gesamtausgaben und den aktuellen Saldo. Außerdem werden die Prozentsätze der Einnahmen und Ausgaben angezeigt.
+https://diego-monfort-landolt.github.io/finance-app/
 
 ## Funktionen
 

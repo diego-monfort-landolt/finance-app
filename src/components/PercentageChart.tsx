@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PieChart, Pie, Cell, Tooltip } from 'recharts';
 
 // Definiert ein Interface für eine Transaktion
@@ -17,6 +17,10 @@ interface PercentageChartProps {
 // Funktionale Komponente, die ein Kreisdiagramm anzeigt
 const PercentageChart: React.FC<PercentageChartProps> = ({ transactions }) => {
   const [transactionList, setTransactionList] = useState(transactions);
+
+  useEffect(() => {
+    setTransactionList(transactions);
+  }, [transactions]);
 
   const incomeTransactions = transactionList.filter(t => t.type === 'income');
   const expenseTransactions = transactionList.filter(t => t.type === 'expense');
