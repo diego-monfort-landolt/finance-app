@@ -63,14 +63,14 @@ const PercentageChart: React.FC<PercentageChartProps> = ({ transactions }) => {
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
         </Pie>
-        <Tooltip /> {/* Tooltip für das Kreisdiagramm */}
+        <Tooltip formatter={(value) => `${value} €`} /> {/* Tooltip für das Kreisdiagramm */}
       </PieChart>
       <div className="transaction-list" style={{ marginTop: '20px', backgroundColor: 'rgba(255, 255, 255, 0.8)', padding: '10px', borderRadius: '5px', boxShadow: '0 0 5px rgba(0, 0, 0, 0.1)' }}>
-        <h3>Ausgaben</h3>
-        <ul>
-          {expenseTransactions.map(t => (
-            <li key={t.id}>
-              {t.description} - {t.amount} EUR
+        <h3>Transaktionen</h3>
+        <ul style={{ listStyleType: 'none', padding: 0 }}>
+          {transactionList.map(t => (
+            <li key={t.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px', wordWrap: 'break-word' }}>
+              <span style={{ flex: 1, textAlign: 'left', borderBottom: t.type === 'income' ? '1px solid green' : '1px solid red' }}>{t.description} - {t.amount} €</span>
               <button onClick={() => removeTransaction(t.id)} style={{ marginLeft: '10px', backgroundColor: '#dc3545', color: '#fff', border: 'none', borderRadius: '3px', cursor: 'pointer' }}>Entfernen</button>
             </li>
           ))}
