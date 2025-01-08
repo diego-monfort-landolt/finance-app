@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { PieChart, Pie, Cell, Tooltip } from 'recharts';
 
 // Definiert ein Interface für eine Transaktion
@@ -16,8 +16,10 @@ interface PercentageChartProps {
 
 // Funktionale Komponente, die ein Kreisdiagramm anzeigt
 const PercentageChart: React.FC<PercentageChartProps> = ({ transactions }) => {
-  const incomeTransactions = transactions.filter(t => t.type === 'income');
-  const expenseTransactions = transactions.filter(t => t.type === 'expense');
+  const [transactionList, setTransactionList] = useState(transactions);
+
+  const incomeTransactions = transactionList.filter(t => t.type === 'income');
+  const expenseTransactions = transactionList.filter(t => t.type === 'expense');
   const totalIncome = incomeTransactions.reduce((acc, t) => acc + t.amount, 0);
   const totalExpenses = expenseTransactions.reduce((acc, t) => acc + t.amount, 0);
   const total = totalIncome + Math.abs(totalExpenses);
@@ -36,11 +38,16 @@ const PercentageChart: React.FC<PercentageChartProps> = ({ transactions }) => {
     }))
   ];
 
-  // Definiert die Farben für die Einnahmen und Ausgab
-  const COLORS = ['#28a745', '#dc3545'];
+  // Definiert die Farben für die Einnahmen und Ausgaben
+  const COLORS = data.map(entry => entry.type === 'income' ? '#28a745' : '#dc3545');
+
+  // Funktion zum Entfernen einer Transaktion
+  const removeTransaction = (id: number) => {
+    setTransactionList(transactionList.filter(t => t.id !== id));
+  };
 
   return (
-    <div className="chart-container">
+    <div className="chart-container" style={{ backgroundColor: '#f0f0f0', padding: '20px', borderRadius: '10px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
       <PieChart width={400} height={400}>
         <Pie
           data={data}
@@ -53,12 +60,24 @@ const PercentageChart: React.FC<PercentageChartProps> = ({ transactions }) => {
           dataKey="value" // Schlüssel für die Datenwerte
         >
           {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={entry.type === 'income' ? COLORS[0] : COLORS[1]} />
+            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
         </Pie>
         <Tooltip /> {/* Tooltip für das Kreisdiagramm */}
       </PieChart>
+      <div className="transaction-list" style={{ marginTop: '20px', backgroundColor: 'rgba(255, 255, 255, 0.8)', padding: '10px', borderRadius: '5px', boxShadow: '0 0 5px rgba(0, 0, 0, 0.1)' }}>
+        <h3>Ausgaben</h3>
+        <ul>
+          {expenseTransactions.map(t => (
+            <li key={t.id}>
+              {t.description} - {t.amount} EUR
+              <button onClick={() => removeTransaction(t.id)} style={{ marginLeft: '10px', backgroundColor: '#dc3545', color: '#fff', border: 'none', borderRadius: '3px', cursor: 'pointer' }}>Entfernen</button>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
+
 export default PercentageChart;
