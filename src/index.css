@@ -6,8 +6,9 @@ body {
   align-items: center;
   height: 100vh;
   text-align: center;
-  background-color: #494646;
+  background-color: #070707b6;
   box-sizing: border-box;
+  
 }
 .App {
   width: 100%;
@@ -30,5 +31,4 @@ body {
 
 .chart-container:hover {
   background-color: #d2dfe0;
-  border: 2px solid #f5bfbf;
 }
