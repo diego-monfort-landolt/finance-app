@@ -69,7 +69,7 @@ const PercentageChart: React.FC<PercentageChartProps> = ({ transactions }) => {
         </Pie>
         <Tooltip formatter={(value) => `${value} €`} /> {/* Tooltip für das Kreisdiagramm */}
       </PieChart>
-      <div className="transaction-list" style={{ marginTop: '20px', backgroundColor: 'rgba(255, 255, 255, 0.8)', padding: '10px', borderRadius: '5px', boxShadow: '0 0 5px rgba(0, 0, 0, 0.1)' }}>
+      <div className="transaction-list" style={{ marginTop: '20px', backgroundColor: '#fff ', color: '#000', padding: '10px', borderRadius: '5px', boxShadow: '0 0 5px rgba(0, 0, 0, 0.1)' }}>
         <h3>Transaktionen</h3>
         <ul style={{ listStyleType: 'none', padding: 0 }}>
           {transactionList.map(t => (

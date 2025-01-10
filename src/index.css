@@ -1,14 +1,12 @@
 body {
   font-family: Arial, sans-serif;
-  margin: 10px;
   padding: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   text-align: center;
-  background-color: #f4f4f4;
-  margin: 20px;
+  background-color: #494646;
   box-sizing: border-box;
 }
 .App {
@@ -32,4 +30,5 @@ body {
 
 .chart-container:hover {
   background-color: #d2dfe0;
+  border: 2px solid #f5bfbf;
 }

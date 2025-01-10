@@ -144,6 +144,7 @@ h1 {
   background-color: blue;
 }
 
+
 /* Stile für die Zusammenfassung im Dunkelmodus */
 .App.dark-mode .summary {
   background-color: #3a3a3a; /* Dunkles Grau für den Hintergrund der Zusammenfassung */
