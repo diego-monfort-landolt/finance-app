@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+// Definiert die Struktur eines Wunsches
 interface Wish {
   id: number;
   description: string;
@@ -7,16 +8,17 @@ interface Wish {
   fulfilled: boolean;
   debt: boolean;
 }
-
+// Definiert die Props für die Wishlist-Komponente
 interface WishlistProps {
   balance: number;
 }
-
+// Funktionale Komponente, die eine Wunschliste anzeigt
 const Wishlist: React.FC<WishlistProps> = ({ balance }) => {
   const [wishes, setWishes] = useState<Wish[]>([]);
   const [description, setDescription] = useState('');
   const [amount, setAmount] = useState<number | undefined>(undefined);
 
+  // Funktion zum Hinzufügen eines neuen Wunsches
   const addWish = () => {
     if (description && amount !== undefined && amount > 0) {
       const newWish = { id: Date.now(), description, amount, fulfilled: false, debt: false };
@@ -28,6 +30,7 @@ const Wishlist: React.FC<WishlistProps> = ({ balance }) => {
     }
   };
 
+  // Funktion zum Erfüllen eines Wunsches
   const fulfillWish = (id: number) => {
     setWishes(wishes.map(wish => {
       if (wish.id === id) {
