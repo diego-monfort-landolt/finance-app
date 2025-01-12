@@ -43,7 +43,6 @@ const Wishlist: React.FC<WishlistProps> = ({ balance }) => {
       return wish;
     }));
   };
-
   return (
     <div>
       <h2>Wunschliste</h2>
