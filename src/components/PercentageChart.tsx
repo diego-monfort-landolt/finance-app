@@ -8,7 +8,6 @@ interface Transaction {
   amount: number;
   type: 'income' | 'expense';
 }
-
 // Definiert die Props für die PercentageChart-Komponente
 interface PercentageChartProps {
   transactions: Transaction[]; // Array von Transaktionen
@@ -27,7 +26,6 @@ const PercentageChart: React.FC<PercentageChartProps> = ({ transactions }) => {
   const totalIncome = incomeTransactions.reduce((acc, t) => acc + t.amount, 0);
   const totalExpenses = expenseTransactions.reduce((acc, t) => acc + t.amount, 0);
   const total = totalIncome + Math.abs(totalExpenses);
-
   // Erstellt die Daten für das Kreisdiagramm
   const data = [
     ...incomeTransactions.map(t => ({
@@ -41,7 +39,6 @@ const PercentageChart: React.FC<PercentageChartProps> = ({ transactions }) => {
       type: 'expense'
     }))
   ];
-
   // Definiert die Farben für die Einnahmen und Ausgaben
   const COLORS = data.map(entry => entry.type === 'income' ? '#28a745' : '#dc3545');
 
@@ -83,5 +80,4 @@ const PercentageChart: React.FC<PercentageChartProps> = ({ transactions }) => {
     </div>
   );
 };
-
 export default PercentageChart;
