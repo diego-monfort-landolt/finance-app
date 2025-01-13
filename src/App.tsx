@@ -166,9 +166,9 @@ ome       </button>
         </div>
         <div className="summary">
           <h2>Zusammenfassung</h2>
-          <p>Einnahmen: <span className="amount income">{totalIncome.toFixed(2)} EUR</span></p>
-          <p>Ausgaben: <span className="amount expense">{totalExpenses.toFixed(2)} EUR</span></p>
-          <p>Saldo: <span className="amount">{balance.toFixed(2)} EUR</span></p>
+          <p>Einnahmen: <span className="amount income">{totalIncome.toFixed(2)} €</span></p>
+          <p>Ausgaben: <span className="amount expense">{totalExpenses.toFixed(2)} €</span></p>
+          <p>Saldo: <span className="amount">{balance.toFixed(2)} €</span></p>
         </div>
         {analysis && (
           <div className={`analysis ${balance >= 0 ? 'positive' : 'negative'}`}>
