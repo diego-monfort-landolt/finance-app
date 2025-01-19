@@ -28,7 +28,6 @@ h1 {
   border-radius: 4px;
   box-sizing: border-box;
 }
-
 /* Stile für den Button innerhalb der Eingabegruppe */
 .input-group button {
   background-color: blue;
@@ -38,23 +37,19 @@ h1 {
   cursor: pointer;
   margin-top: 10px;
 }
-
 /* Hover-Effekt für den Button innerhalb der Eingabegruppe */
 .input-group button:hover {
   background-color: darkblue;
   box-shadow: 0 0 7px #4f4f4f;
 }
-
 /* Stile für den Diagramm-Container */
 .chart-container {
   margin: 20px 0;
 }
-
 /* Hover-Effekt für den Diagramm-Container */
 .chart-container:hover {
   background-color: #e0f7fa;
 }
-
 /* Stile für die Zusammenfassung */
 .summary {
   margin: 20px auto;
@@ -64,38 +59,32 @@ h1 {
   max-width: 400px;
   border-radius: 5px;
 }
-
 /* Stile für die Überschrift der Zusammenfassung */
 .summary h2 {
   margin-bottom: 10px;
 }
-
 /* Stile für die Absätze innerhalb der Zusammenfassung */
 .summary p {
   margin: 5px 0;
   display: flex;
   justify-content: space-between;
 }
-
 /* Stile für die Beträge innerhalb der Zusammenfassung */
 .summary .amount {
   margin-left: auto;
   padding: 2px 5px;
   border-radius: 4px;
 }
-
 /* Stile für Einnahmen innerhalb der Zusammenfassung */
 .summary .income {
   background-color: #d4edda;
   color: #155724;
 }
-
 /* Stile für Ausgaben innerhalb der Zusammenfassung */
 .summary .expense {
   background-color: #f8d7da;
   color: #721c24;
 }
-
 /* Hier Startet der Style des dunklen Modus */
 .dark-mode-toggle {
   position: absolute;
@@ -108,29 +97,24 @@ h1 {
   cursor: pointer;
   outline: none;
 }
-
 /* Fokus-Effekt für den Dark-Mode-Toggle */
 .dark-mode-toggle:focus {
   outline: none;
 }
-
 /* Stile für den Dark-Mode-Toggle im Dunkelmodus */
 .App.dark-mode .dark-mode-toggle {
   color: #ffdd57; /* Farbe für das Sonnen-Icon im Dunkelmodus */
 }
-
 /* Stile für das Haupt-App-Container im Dunkelmodus */
 .App.dark-mode {
   background-color: #2c2c2c; /* Dunkles Grau für den Hintergrund */
   color: #ffffff; /* Weiß für den Text */
 }
-
 /* Stile für den Inhalt innerhalb des App-Containers im Dunkelmodus */
 .App.dark-mode .content {
   background-color: #2c2c2c; /* Dunkles Grau für den Hintergrund der Inhalte */
   color: #ffffff; /* Weiß für den Text */
 }
-
 /* Stile für die Eingabefelder, Auswahlfelder und Buttons innerhalb der Eingabegruppe im Dunkelmodus */
 .App.dark-mode .input-group input,
 .App.dark-mode .input-group select,
@@ -141,15 +125,12 @@ h1 {
 .App.dark-mode .input-group button {
   background-color: blue;
 }
-
-
 /* Stile für die Zusammenfassung im Dunkelmodus */
 .App.dark-mode .summary {
   background-color: #3a3a3a; /* Dunkles Grau für den Hintergrund der Zusammenfassung */
   color: #ffffff; /* Weiß für den Text */
   box-shadow: 0 0 7px #ddd9d9;
 }
-
 /* Stile für die Verbesserungen */
 .improvements {
   margin: 20px auto;
@@ -161,12 +142,10 @@ h1 {
   background-color: rgba(144, 238, 144, 0.5); /* Leichtes Grün für positive Verbesserungen */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
 /* Stile für negative Verbesserungen */
 .improvements.negative {
   background-color: rgba(255, 99, 71, 0.5); /* Leichtes Rot für negative Verbesserungen */
 }
-
 /* Stile für einzelne Verbesserung */
 .improvement {
   display: flex;
@@ -174,7 +153,6 @@ h1 {
   align-items: center;
   margin-bottom: 10px;
 }
-
 /* Stile für den Button innerhalb einer Verbesserung */
 .improvement button {
   background: none;
@@ -183,12 +161,10 @@ h1 {
   cursor: pointer;
   font-size: 16px;
 }
-
 /* Hover-Effekt für den Button innerhalb einer Verbesserung */
 .improvement button:hover {
   color: red;
 }
-
 /* Stile für die Finanzanalyse */
 .analysis {
   margin: 20px auto;
@@ -206,7 +182,6 @@ h1 {
   margin-top: 10px; 
   color: #fff; 
 }
-
 /* Stile für negative Finanzanalyse */
 .positive { 
   background-color: #d4edda; /* Leichtes Grün */ 
@@ -224,7 +199,6 @@ h1 {
   overflow: scroll;
   background-color: rgba(0, 0, 0, 0.4);
 }
-
 /* Stile für den Inhalt des Modals */
 .modal-content {
   background-color: #fefefe;
@@ -236,7 +210,6 @@ h1 {
   text-align: center;
   position: relative; /* Hinzugefügt, um das "X" zu positionieren */
 }
-
 /* Stile für das Schließen-Symbol im Modal */
 .close {
   color: #aaa;
@@ -246,7 +219,6 @@ h1 {
   font-size: 28px;
   font-weight: bold;
 }
-
 /* Hover- und Fokus-Effekte für das Schließen-Symbol im Modal */
 .close:hover,
 .close:focus {
@@ -266,7 +238,6 @@ h1 {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   color: #000;
 }
-
 /* Media Queries für verschiedene Geräte */
 @media (max-width: 1024px) { /* iPad, Tablets */
   .App {
