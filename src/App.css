@@ -11,14 +11,12 @@
 h1 {
   margin: 20px 0; /* Fügt oben und unten einen Mindestabstand von 20px hinzu */
 }
-
 /* Stile für die Eingabegruppe */
 .input-group {
   margin-bottom: 10px;
   width: 100%;
   max-width: 400px;
 }
-
 /* Stile für die Eingabefelder, Auswahlfelder und Buttons innerhalb der Eingabegruppe */
 .input-group input,
 .input-group select,
