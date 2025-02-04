@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import Wishlist from './components/Wishlist';
 import PercentageChart from './components/PercentageChart';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon, faFileExport } from '@fortawesome/free-solid-svg-icons';
@@ -13,7 +12,6 @@ export interface Transaction {
   type: 'income' | 'expense';
   comment: string;
 }
-
 const App: React.FC = () => {
   // Zustand für Transaktionen, initialisiert mit gespeicherten Daten aus dem lokalen Speicher
   const [transactions, setTransactions] = useState<Transaction[]>(() => {
@@ -30,17 +28,14 @@ const App: React.FC = () => {
   const [improvements, setImprovements] = useState<string[]>([]);
   const [showModal, setShowModal] = useState(false);
   const [suggestion, setSuggestion] = useState('');
-
   // Berechnung der Gesamteinnahmen, Gesamtausgaben und des Saldos
   const totalIncome = transactions.filter(t => t.type === 'income').reduce((acc, t) => acc + t.amount, 0);
   const totalExpenses = transactions.filter(t => t.type === 'expense').reduce((acc, t) => acc + t.amount, 0);
   const balance = totalIncome - totalExpenses;
-
   // Effekt, um Transaktionen im lokalen Speicher zu speichern, wenn sich die Transaktionen ändern
   useEffect(() => {
     localStorage.setItem('transactions', JSON.stringify(transactions));
   }, [transactions]);
-
   // Effekt zur Anzeige von Vorschlägen basierend auf dem Saldo
   useEffect(() => {
     if (balance > 0) {
@@ -51,7 +46,6 @@ const App: React.FC = () => {
       setSuggestion('');
     }
   }, [balance]);
-
   // Funktion zum Hinzufügen einer neuen Transaktion
   const addTransaction = () => {
     if (amount !== undefined && type && amount !== 0) {
@@ -66,25 +60,21 @@ const App: React.FC = () => {
       alert('Bitte füllen Sie alle Pflichtfelder aus.');
     }
   };
-
   // Funktion zum Löschen einer Transaktion
   const deleteTransaction = (id: number) => {
     setTransactions(transactions.filter((transaction) => transaction.id !== id));
   };
-
   // Funktion zum Zurücksetzen aller Transaktionen
   const resetTransactions = () => {
     setTransactions([]);
     localStorage.removeItem('transactions');
   };
-
   // Funktion zur Analyse der Finanzen und Generierung von Finanztipps
   const analyzeFinances = () => {
     if (transactions.length === 0) {
       setAnalysis('Keine Transaktionen vorhanden. Bitte fügen Sie Transaktionen hinzu, um eine Analyse durchzuführen.');
       return;
     }
-
     const totalIncome = transactions.filter(t => t.type === 'income').reduce((acc, t) => acc + t.amount, 0);
     const totalExpenses = transactions.filter(t => t.type === 'expense').reduce((acc, t) => acc + t.amount, 0);
     const balance = totalIncome - totalExpenses;
@@ -109,12 +99,10 @@ const App: React.FC = () => {
 
     setAnalysis(advice);
   };
-
   // Funktion zum Entfernen einer Verbesserung
   const removeImprovement = (index: number) => {
     setImprovements(improvements.filter((_, i) => i !== index));
   };
-
   
   return (
     <div className={`App ${darkMode ? 'dark-mode' : ''}`}>
@@ -201,12 +189,9 @@ ome       </button>
         {/* <div className="wishlist-notification"> */}
           {/* <p>Wunschliste hinzugefügt - wird demnächst freigeschaltet</p> */}
           {/* <Wishlist balance={balance} /> Wishlist-Komponente hinzugefügt */}
-        {/* </div>  */}
-       
-        
+        {/* </div>  */}  
         </div>
     </div>
   );
 };
-
 export default App;
