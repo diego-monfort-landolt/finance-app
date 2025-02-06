@@ -52,7 +52,6 @@ const PercentageChart: React.FC<PercentageChartProps> = ({ transactions }) => {
   const removeTransaction = (id: number) => {
     setTransactionList(transactionList.filter(t => t.id !== id));
   };
-
   return (
     <div className="chart-container" style={{ backgroundColor: '#f0f0f0', padding: '20px', borderRadius: '10px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
       <PieChart width={400} height={400}>
