@@ -6,7 +6,7 @@ interface Transaction {
   id: number;
   description: string;
   amount: number;
-  type: 'income' | 'expense';
+  type: 'income' | 'expense' | 'wish list';
 }
 // Definiert die Props für die PercentageChart-Komponente
 interface PercentageChartProps {
@@ -23,6 +23,7 @@ const PercentageChart: React.FC<PercentageChartProps> = ({ transactions }) => {
 
   const incomeTransactions = transactionList.filter(t => t.type === 'income');
   const expenseTransactions = transactionList.filter(t => t.type === 'expense');
+  const wishlistTransactions = transactionList.filter(t => t.type === 'wish list');
   const totalIncome = incomeTransactions.reduce((acc, t) => acc + t.amount, 0);
   const totalExpenses = expenseTransactions.reduce((acc, t) => acc + t.amount, 0);
   const total = totalIncome + Math.abs(totalExpenses);
@@ -37,6 +38,11 @@ const PercentageChart: React.FC<PercentageChartProps> = ({ transactions }) => {
       name: `${t.description} (${((Math.abs(t.amount) / total) * 100).toFixed(2)}%)`,
       value: Math.abs(t.amount),
       type: 'expense'
+    })),
+    ...wishlistTransactions.map(t => ({
+      name: `${t.description} (${((Math.abs(t.amount) / total) * 100).toFixed(2)}%)`,
+      value: Math.abs(t.amount),
+      type: 'wish list'
     }))
   ];
   // Definiert die Farben für die Einnahmen und Ausgaben

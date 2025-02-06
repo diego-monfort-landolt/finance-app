@@ -78,7 +78,6 @@ const App: React.FC = () => {
     const totalIncome = transactions.filter(t => t.type === 'income').reduce((acc, t) => acc + t.amount, 0);
     const totalExpenses = transactions.filter(t => t.type === 'expense').reduce((acc, t) => acc + t.amount, 0);
     const balance = totalIncome - totalExpenses;
-
     let advice = 'Hier sind einige Finanztipps basierend auf deinen Transaktionen:\n';
 
     if (totalIncome > totalExpenses) {
@@ -96,14 +95,12 @@ const App: React.FC = () => {
     } else if (balance >= 100) {
       advice += 'Du hast ein gutes Guthaben. Überlege, wie du es investieren kannst.\n';
     }
-
     setAnalysis(advice);
   };
   // Funktion zum Entfernen einer Verbesserung
   const removeImprovement = (index: number) => {
     setImprovements(improvements.filter((_, i) => i !== index));
   };
-  
   return (
     <div className={`App ${darkMode ? 'dark-mode' : ''}`}>
       <div className="dark-mode-toggle-container">
@@ -125,20 +122,18 @@ const App: React.FC = () => {
             placeholder="Betrag"
             value={amount !== undefined ? amount : ''}
             onChange={(e) => setAmount(Number(e.target.value))}
-          />
-         
+          />    
           <select value={type} onChange={(e) => setType(e.target.value as 'income' | 'expense')}>
             <option value="income">Einnahme</option>
             <option value="expense">Ausgabe</option>
+            <option disabled value="wish list">Wunsch Liste</option>
           </select>
-         
           <button onClick={addTransaction}>Transaktion hinzufügen</button>
-         
           <button 
           onClick={resetTransactions} 
           style={{ marginTop: '10px', backgroundColor: 'red' }}>
-            Alle Transaktionen zurücksetzen
-            </button>
+          Alle Transaktionen zurücksetzen
+          </button>
           <button 
           onClick={analyzeFinances} 
           style={{ marginTop: '10px', backgroundColor: 'green' }}>
