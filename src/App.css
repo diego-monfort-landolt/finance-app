@@ -238,6 +238,14 @@ h1 {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   color: #000;
 }
+/* Hide the spinner for input[type="number"] */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
 /* Media Queries für verschiedene Geräte */
 @media (max-width: 1024px) { /* iPad, Tablets */
   .App {

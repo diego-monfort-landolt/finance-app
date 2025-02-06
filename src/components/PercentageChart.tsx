@@ -12,7 +12,6 @@ interface Transaction {
 interface PercentageChartProps {
   transactions: Transaction[]; // Array von Transaktionen
 }
-
 // Funktionale Komponente, die ein Kreisdiagramm anzeigt
 const PercentageChart: React.FC<PercentageChartProps> = ({ transactions }) => {
   const [transactionList, setTransactionList] = useState(transactions);
@@ -20,7 +19,6 @@ const PercentageChart: React.FC<PercentageChartProps> = ({ transactions }) => {
   useEffect(() => {
     setTransactionList(transactions);
   }, [transactions]);
-
   const incomeTransactions = transactionList.filter(t => t.type === 'income');
   const expenseTransactions = transactionList.filter(t => t.type === 'expense');
   const wishlistTransactions = transactionList.filter(t => t.type === 'wish list');
