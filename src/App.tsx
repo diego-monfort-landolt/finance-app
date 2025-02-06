@@ -142,7 +142,7 @@ const App: React.FC = () => {
           <button 
           className="export-button"
           onClick={() => exportToCSV(transactions)} 
-          style={{ marginTop: '10px', marginLeft: 'auto', padding: '10px', borderRadius: '8px', backgroundColor: '#007bff', color: 'white' }}> 
+          style={{ marginTop: '10px', marginLeft: 'auto', padding: '10px', borderRadius: '8px', backgroundColor: 'blue', color: 'white' }}> 
           <FontAwesomeIcon icon={faFileExport} /> 
           Exportieren        
           </button>
