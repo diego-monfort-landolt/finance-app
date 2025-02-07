@@ -6,7 +6,6 @@ export const exportToCSV = (transactions: Transaction[], fileName: string = 'tra
     const csvRows = []; // Array zum Speichern der CSV-Zeilen
     const headers = ['ID', 'Beschreibung', 'Betrag', 'Typ', 'Kommentar']; // Kopfzeilen der CSV-Datei
     csvRows.push(headers.join(',')); // Füge die Kopfzeilen zur ersten Zeile hinzu
-
     // Iteriere über jede Transaktion und erstelle eine CSV-Zeile
     transactions.forEach(transaction => {
       const values = [
@@ -18,7 +17,6 @@ export const exportToCSV = (transactions: Transaction[], fileName: string = 'tra
       ];
       csvRows.push(values.join(',')); // Füge die CSV-Zeile zum Array hinzu
     });
-
     const csvContent = csvRows.join('\n'); // Verbinde alle Zeilen zu einem CSV-String
     const blob = new Blob([csvContent], { type: 'text/csv' }); // Erstelle ein Blob-Objekt mit dem CSV-String
     const url = window.URL.createObjectURL(blob); // Erstelle eine URL für das Blob-Objekt
