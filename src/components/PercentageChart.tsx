@@ -15,7 +15,6 @@ interface PercentageChartProps {
 // Funktionale Komponente, die ein Kreisdiagramm anzeigt
 const PercentageChart: React.FC<PercentageChartProps> = ({ transactions }) => {
   const [transactionList, setTransactionList] = useState(transactions);
-
   useEffect(() => {
     setTransactionList(transactions);
   }, [transactions]);
@@ -45,7 +44,6 @@ const PercentageChart: React.FC<PercentageChartProps> = ({ transactions }) => {
   ];
   // Definiert die Farben für die Einnahmen und Ausgaben
   const COLORS = data.map(entry => entry.type === 'income' ? '#28a745' : '#dc3545');
-
   // Funktion zum Entfernen einer Transaktion
   const removeTransaction = (id: number) => {
     setTransactionList(transactionList.filter(t => t.id !== id));
