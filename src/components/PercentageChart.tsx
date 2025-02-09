@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { PieChart, Pie, Cell, Tooltip } from 'recharts';
-
 // Definiert ein Interface für eine Transaktion
 interface Transaction {
   id: number;
