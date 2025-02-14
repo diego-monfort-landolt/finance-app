@@ -87,7 +87,6 @@ const App: React.FC = () => {
     } else {
       advice += 'Deine Einnahmen und Ausgaben sind ausgeglichen. Versuche, deine Ausgaben zu reduzieren, um etwas zu sparen.\n';
     }
-
     if (balance < 0) {
       advice += 'Du hast ein negatives Guthaben. Überlege, wie du deine Ausgaben reduzieren oder deine Einnahmen erhöhen kannst.\n';
     } else if (balance > 0 && balance < 100) {
@@ -170,8 +169,7 @@ const App: React.FC = () => {
               </div>
             ))}
           </div>
-        )}
-       
+        )}    
         {showModal && (
           <div className="modal">
             <div className="modal-content">
