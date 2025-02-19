@@ -18,7 +18,6 @@ const App: React.FC = () => {
     const savedTransactions = localStorage.getItem('transactions');
     return savedTransactions ? JSON.parse(savedTransactions) : [];
   });
-  
   const [description, setDescription] = useState('');
   const [amount, setAmount] = useState<number | undefined>(undefined);
   const [type, setType] = useState<'income' | 'expense'>('income');
