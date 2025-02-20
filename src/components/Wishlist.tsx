@@ -17,7 +17,6 @@ const Wishlist: React.FC<WishlistProps> = ({ balance }) => {
   const [wishes, setWishes] = useState<Wish[]>([]);
   const [description, setDescription] = useState('');
   const [amount, setAmount] = useState<number | undefined>(undefined);
-
   // Funktion zum Hinzufügen eines neuen Wunsches
   const addWish = () => {
     if (description && amount !== undefined && amount > 0) {
