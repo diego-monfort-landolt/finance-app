@@ -8,7 +8,6 @@ interface TransactionFormProps {
 const TransactionForm: React.FC<TransactionFormProps> = ({ addTransaction }) => {
   const [description, setDescription] = useState(''); // Zustand für die Beschreibung
   const [amount, setAmount] = useState(0); // Zustand für den Betrag
-
   // Funktion zum Verarbeiten des Formulars
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -16,7 +15,6 @@ const TransactionForm: React.FC<TransactionFormProps> = ({ addTransaction }) => 
     setDescription(''); // Formular zurücksetzen
     setAmount(0); // Formular zurücksetzen
   };
-
   return (
     <form onSubmit={handleSubmit}>
       <input
