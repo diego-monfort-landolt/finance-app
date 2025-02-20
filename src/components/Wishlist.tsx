@@ -29,7 +29,6 @@ const Wishlist: React.FC<WishlistProps> = ({ balance }) => {
       alert('Bitte füllen Sie alle Felder aus.');
     }
   };
-
   // Funktion zum Erfüllen eines Wunsches
   const fulfillWish = (id: number) => {
     setWishes(wishes.map(wish => {
