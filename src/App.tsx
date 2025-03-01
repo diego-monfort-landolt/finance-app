@@ -129,12 +129,20 @@ const App: React.FC = () => {
           <button onClick={addTransaction}>Transaktion hinzufügen</button>
           <button 
           onClick={resetTransactions} 
-          style={{ marginTop: '10px', backgroundColor: 'red' }}>
+          style={{ 
+            marginTop: '10px', 
+            backgroundColor: 'red' 
+            }}
+            >
           Alle Transaktionen zurücksetzen
           </button>
           <button 
           onClick={analyzeFinances} 
-          style={{ marginTop: '10px', backgroundColor: 'green' }}>
+          style={{ 
+            marginTop: '10px', 
+            backgroundColor: 'green' 
+            }}
+            >
             Finanzen analysieren
             </button>
           <button 
