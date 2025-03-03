@@ -21,7 +21,6 @@ body {
   position: relative; /* Hinzugefügt, um den Dark-Mode-Toggle zu positionieren */
   box-sizing: border-box; /* Padding und Border in die Gesamtbreite und -höhe einbeziehen */
 }
-
 .chart-container {
   margin: 10px auto;
   border-radius: 15px;
