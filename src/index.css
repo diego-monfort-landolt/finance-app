@@ -26,7 +26,6 @@ body {
   border-radius: 15px;
   box-shadow: 0 0 10px rgb(245, 191, 191);
 }
-
 .chart-container:hover {
   background-color: #d2dfe0;
 }
