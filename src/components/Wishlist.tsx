@@ -8,6 +8,7 @@ interface Wish {
   fulfilled: boolean;
   debt: boolean;
 }
+
 // Definiert die Props für die Wishlist-Komponente
 interface WishlistProps {
   balance: number;
@@ -25,7 +26,7 @@ const Wishlist: React.FC<WishlistProps> = ({ balance }) => {
       setDescription('');
       setAmount(undefined);
     } else {
-      alert('Bitte füllen Sie alle Felder aus.');
+      alert('¡Bitte füllen Sie alle Felder aus!');
     }
   };
   // Funktion zum Erfüllen eines Wunsches
@@ -33,9 +34,15 @@ const Wishlist: React.FC<WishlistProps> = ({ balance }) => {
     setWishes(wishes.map(wish => {
       if (wish.id === id) {
         if (balance >= wish.amount) {
-          return { ...wish, fulfilled: true, debt: false };
+          return { ...wish, 
+            fulfilled: true, 
+            debt: false 
+          };
         } else {
-          return { ...wish, fulfilled: true, debt: true };
+          return { ...wish, 
+            fulfilled: true, 
+            debt: true 
+          };
         }
       }
       return wish;
