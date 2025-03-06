@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 // Definiere die Eigenschaften für das TransactionForm-Props
 interface TransactionFormProps {
   addTransaction: (transaction: { description: string; amount: number }) => void;
