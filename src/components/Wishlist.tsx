@@ -1,55 +1,48 @@
 import React, { useState } from 'react';
 
-// Definiert die Struktur eines Wunsches
 interface Wish {
   id: number;
   description: string;
   amount: number;
   fulfilled: boolean;
-  debt: boolean;
 }
 
-// Definiert die Props für die Wishlist-Komponente
 interface WishlistProps {
   balance: number;
+  wishes: Wish[];
+  setWishes: React.Dispatch<React.SetStateAction<Wish[]>>;
 }
-// Funktionale Komponente, die eine Wunschliste anzeigt
-const Wishlist: React.FC<WishlistProps> = ({ balance }) => {
-  const [wishes, setWishes] = useState<Wish[]>([]);
+
+const Wishlist: React.FC<WishlistProps> = ({ balance, wishes, setWishes }) => {
   const [description, setDescription] = useState('');
   const [amount, setAmount] = useState<number | undefined>(undefined);
-  // Funktion zum Hinzufügen eines neuen Wunsches
+
   const addWish = () => {
     if (description && amount !== undefined && amount > 0) {
-      const newWish = { id: Date.now(), description, amount, fulfilled: false, debt: false };
+      const newWish = { id: Date.now(), description, amount, fulfilled: false };
       setWishes([...wishes, newWish]);
       setDescription('');
       setAmount(undefined);
     } else {
-      alert('¡Bitte füllen Sie alle Felder aus!');
+      alert('Bitte füllen Sie alle Felder aus.');
     }
   };
-  // Funktion zum Erfüllen eines Wunsches
+
   const fulfillWish = (id: number) => {
     setWishes(wishes.map(wish => {
       if (wish.id === id) {
         if (balance >= wish.amount) {
-          return { ...wish, 
-            fulfilled: true, 
-            debt: false 
-          };
+          return { ...wish, fulfilled: true };
         } else {
-          return { ...wish, 
-            fulfilled: true, 
-            debt: true 
-          };
+          alert('Nicht genügend Guthaben, um diesen Wunsch zu erfüllen.');
         }
       }
       return wish;
     }));
   };
+
   return (
-    <div>
+    <div className="wishlist">
       <h2>Wunschliste</h2>
       <div className="input-group">
         <input
@@ -68,14 +61,10 @@ const Wishlist: React.FC<WishlistProps> = ({ balance }) => {
       </div>
       <ul>
         {wishes.map(wish => (
-          <li key={wish.id}>
+          <li key={wish.id} className={wish.fulfilled ? 'fulfilled' : ''}>
             <span>{wish.description} - {wish.amount} €</span>
-            {wish.fulfilled ? (
-              <span> (Erfüllt{wish.debt ? ' mit Schulden' : ''})</span>
-            ) : (
-              balance >= wish.amount && (
-                <button onClick={() => fulfillWish(wish.id)}>Erfüllen</button>
-              )
+            {!wish.fulfilled && (
+              <button onClick={() => fulfillWish(wish.id)}>Erfüllen</button>
             )}
           </li>
         ))}
@@ -83,4 +72,5 @@ const Wishlist: React.FC<WishlistProps> = ({ balance }) => {
     </div>
   );
 };
+
 export default Wishlist;
