@@ -6,7 +6,6 @@ interface Wish {
   amount: number;
   fulfilled: boolean;
 }
-
 interface WishlistProps {
   balance: number;
   wishes: Wish[];
