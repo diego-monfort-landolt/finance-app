@@ -11,7 +11,6 @@ interface WishlistProps {
   wishes: Wish[];
   setWishes: React.Dispatch<React.SetStateAction<Wish[]>>;
 }
-
 const Wishlist: React.FC<WishlistProps> = ({ balance, wishes, setWishes }) => {
   const [description, setDescription] = useState('');
   const [amount, setAmount] = useState<number | undefined>(undefined);
