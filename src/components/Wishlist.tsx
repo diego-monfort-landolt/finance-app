@@ -70,5 +70,4 @@ const Wishlist: React.FC<WishlistProps> = ({ balance, wishes, setWishes }) => {
     </div>
   );
 };
-
 export default Wishlist;
