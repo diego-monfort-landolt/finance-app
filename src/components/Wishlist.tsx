@@ -25,7 +25,6 @@ const Wishlist: React.FC<WishlistProps> = ({ balance, wishes, setWishes }) => {
       alert('Bitte füllen Sie alle Felder aus.');
     }
   };
-
   const fulfillWish = (id: number) => {
     setWishes(wishes.map(wish => {
       if (wish.id === id) {
@@ -38,7 +37,6 @@ const Wishlist: React.FC<WishlistProps> = ({ balance, wishes, setWishes }) => {
       return wish;
     }));
   };
-
   return (
     <div className="wishlist">
       <h2>Wunschliste</h2>
