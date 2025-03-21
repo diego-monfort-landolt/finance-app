@@ -5,7 +5,6 @@ interface NotificationProps {
     message: string;
     onClose: () => void;
 }
-
 const Notification: React.FC<NotificationProps> = ({ message, onClose }) => {
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -21,5 +20,4 @@ const Notification: React.FC<NotificationProps> = ({ message, onClose }) => {
         </div>
     );
 };
-
 export default Notification;
