@@ -4,6 +4,7 @@ import PercentageChart from './components/PercentageChart';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon, faFileExport } from '@fortawesome/free-solid-svg-icons';
 import { exportToCSV } from './components/ExportCSV';
+import Notification from './components/Notification';
 
 export interface Transaction {
   id: number;
@@ -46,19 +47,29 @@ const App: React.FC = () => {
     }
   }, [balance]);
   // Funktion zum Hinzufügen einer neuen Transaktion
+  const [notifications, setNotifications] = useState<string[]>([]);
+
   const addTransaction = () => {
-    if (amount !== undefined && type && amount !== 0) {
-      const newTransaction = { id: Date.now(), description, amount, type, comment };
-      setTransactions([newTransaction, ...transactions]);
-      // Zurücksetzen der Eingabefelder
-      setDescription('');
-      setAmount(undefined);
-      setType('income');
-      setComment('');
-    } else {
-      alert('Bitte füllen Sie alle Pflichtfelder aus.');
+     if (!description || amount === undefined || amount === 0) {
+        // Fehlerfall: Eingaben sind ungültig
+        alert('Bitte füllen Sie alle Pflichtfelder aus.');
+        return; // Abbrechen, um keine Benachrichtigung hinzuzufügen
     }
+
+    // Erfolgreiche Transaktion hinzufügen
+    const newTransaction = { id: Date.now(), description, amount, type, comment };
+    setTransactions([newTransaction, ...transactions]);
+
+    // Benachrichtigung hinzufügen
+    setNotifications([...notifications, `Transaktion hinzugefügt: ${description}`]);
+
+    // Eingabefelder zurücksetzen
+    setDescription('');
+    setAmount(undefined);
+    setType('income');
+    setComment('');
   };
+
   // Funktion zum Löschen einer Transaktion
   const deleteTransaction = (id: number) => {
     setTransactions(transactions.filter((transaction) => transaction.id !== id));
@@ -99,6 +110,7 @@ const App: React.FC = () => {
   const removeImprovement = (index: number) => {
     setImprovements(improvements.filter((_, i) => i !== index));
   };
+
   return (
     <div className={`App ${darkMode ? 'dark-mode' : ''}`}>
       <div className="dark-mode-toggle-container">
@@ -127,6 +139,13 @@ const App: React.FC = () => {
             <option disabled value="wish list">Wunsch Liste</option>
           </select>
           <button onClick={addTransaction}>Transaktion hinzufügen</button>
+          {notifications.map((message, index) => (
+                <Notification
+                    key={index}
+                    message={message}
+                    onClose={() => setNotifications((prev) => prev.slice(1))}
+                />
+            ))}
           <button 
           onClick={resetTransactions} 
           style={{ 
