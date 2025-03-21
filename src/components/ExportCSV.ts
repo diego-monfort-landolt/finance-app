@@ -26,6 +26,6 @@ export const exportToCSV = (transactions: Transaction[], fileName: string = 'tra
     a.click(); // Simuliere einen Klick auf den Link, um den Download zu starten
     window.URL.revokeObjectURL(url); // Gib die URL frei, um Speicherlecks zu vermeiden
   } catch (error) {
-    console.error('Fehler beim Exportieren der CSV-Datei:', error); // Fehlerbehandlung
+    console.error('Fehler beim Exportieren der CSV-Datei:'); // Fehlerbehandlung
   }
 };
