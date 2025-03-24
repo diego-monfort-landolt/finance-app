@@ -55,21 +55,17 @@ const App: React.FC = () => {
         alert('Bitte füllen Sie alle Pflichtfelder aus.');
         return; // Abbrechen, um keine Benachrichtigung hinzuzufügen
     }
-
     // Erfolgreiche Transaktion hinzufügen
     const newTransaction = { id: Date.now(), description, amount, type, comment };
     setTransactions([newTransaction, ...transactions]);
-
     // Benachrichtigung hinzufügen
     setNotifications([...notifications, `Transaktion hinzugefügt: ${description}`]);
-
     // Eingabefelder zurücksetzen
     setDescription('');
     setAmount(undefined);
     setType('income');
     setComment('');
   };
-
   // Funktion zum Löschen einer Transaktion
   const deleteTransaction = (id: number) => {
     setTransactions(transactions.filter((transaction) => transaction.id !== id));
