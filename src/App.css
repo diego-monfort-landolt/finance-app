@@ -244,8 +244,6 @@ input[type='number']::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
-
 /* Media Queries für verschiedene Geräte */
 @media (max-width: 1024px) { /* iPad, Tablets */
   .App {
@@ -264,7 +262,6 @@ input[type='number']::-webkit-inner-spin-button {
     max-width: 80%;
   }
 }
-
 @media (max-width: 768px) { /* Mobile Geräte */
   .App {
     padding: 10px;
@@ -282,7 +279,6 @@ input[type='number']::-webkit-inner-spin-button {
     max-width: 90%;
   }
 }
-
 @media (max-width: 358px) { /* Sehr kleine Mobile Geräte */
   .App {
     padding: 5px;
