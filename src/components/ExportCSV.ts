@@ -1,5 +1,4 @@
 import { Transaction } from '../App'; // Importiere das Transaction-Interface
-
 // Funktion zum Exportieren von Transaktionen als CSV-Datei
 export const exportToCSV = (transactions: Transaction[], fileName: string = 'transactions.csv') => {
   try {
