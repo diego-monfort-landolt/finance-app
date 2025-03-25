@@ -106,7 +106,6 @@ const App: React.FC = () => {
   const removeImprovement = (index: number) => {
     setImprovements(improvements.filter((_, i) => i !== index));
   };
-
   return (
     <div className={`App ${darkMode ? 'dark-mode' : ''}`}>
       <div className="dark-mode-toggle-container">
