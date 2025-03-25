@@ -205,12 +205,7 @@ const App: React.FC = () => {
               <p>{suggestion}</p>
             </div>
           </div>
-        )}
-        {/* Hier wird die wunschliste freigeschaltet */}
-        {/* <div className="wishlist-notification"> */}
-          {/* <p>Wunschliste hinzugefügt - wird demnächst freigeschaltet</p> */}
-          {/* <Wishlist balance={balance} /> Wishlist-Komponente hinzugefügt */}
-        {/* </div>  */}  
+        )} 
         </div>
     </div>
   );
