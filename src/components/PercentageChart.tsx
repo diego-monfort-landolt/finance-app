@@ -14,16 +14,15 @@ interface PercentageChartProps {
   transactions: Transaction[];
 }
 
-// Die PercentageChart-Komponente
 const PercentageChart: React.FC<PercentageChartProps> = ({ transactions }) => {
-  // Lokaler Zustand, initialisiert mit den übergebenen Transaktionen
+  // Lokaler Zustand, synchronisiert mit den übergebenen Transaktionen
   const [transactionList, setTransactionList] = useState<Transaction[]>(transactions);
 
   useEffect(() => {
     setTransactionList(transactions);
   }, [transactions]);
 
-  // Filtere Transaktionen nach Typ
+  // Filtere nach Transaktionstyp
   const incomeTransactions = transactionList.filter(t => t.type === 'income');
   const expenseTransactions = transactionList.filter(t => t.type === 'expense');
   const wishlistTransactions = transactionList.filter(t => t.type === 'wish list');
@@ -31,9 +30,9 @@ const PercentageChart: React.FC<PercentageChartProps> = ({ transactions }) => {
   const totalIncome = incomeTransactions.reduce((acc, t) => acc + t.amount, 0);
   const totalExpenses = expenseTransactions.reduce((acc, t) => acc + t.amount, 0);
   const total = totalIncome + Math.abs(totalExpenses);
-  const safeTotal = total === 0 ? 1 : total; // Vermeidet Division durch 0
+  const safeTotal = total === 0 ? 1 : total; // Zur Vermeidung einer Division durch 0
 
-  // Erstelle die Daten für das Kreisdiagramm
+  // Daten für das Diagramm
   const data = [
     ...incomeTransactions.map(t => ({
       name: `${t.description} (${((t.amount / safeTotal) * 100).toFixed(2)}%)`,
@@ -52,10 +51,12 @@ const PercentageChart: React.FC<PercentageChartProps> = ({ transactions }) => {
     }))
   ];
 
-  // Farben: Einnahmen = Grün, Ausgaben/Wunschliste = Rot
-  const COLORS = data.map(entry => entry.type === 'income' ? '#28a745' : '#dc3545');
+  // Definierte Farben: Einnahmen in Grün, sonst Rot
+  const COLORS = data.map(entry => 
+    entry.type === 'income' ? '#28a745' : '#dc3545'
+  );
 
-  // Funktion zum Entfernen einer Transaktion (nur lokaler Zustand)
+  // Entfernt eine Transaktion aus dem lokalen Zustand
   const removeTransaction = (id: number) => {
     setTransactionList(prev => prev.filter(t => t.id !== id));
   };
@@ -68,18 +69,20 @@ const PercentageChart: React.FC<PercentageChartProps> = ({ transactions }) => {
         padding: '20px',
         borderRadius: '10px',
         boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
-        maxWidth: '600px',
+        width: '100%',
+        maxWidth: '800px', // Erlaubt einen größeren Container, wenn der Bildschirm breit genug ist
         margin: '20px auto'
       }}
     >
-      <ResponsiveContainer width="100%" height={300}>
+      {/* ResponsiveContainer mit fester Höhe, sodass das Diagramm mehr Platz erhält */}
+      <ResponsiveContainer width="100%" height={400}>
         <PieChart>
           <Pie
             data={data}
             cx="50%"
             cy="50%"
-            innerRadius="15%"
-            outerRadius="35%"
+            innerRadius="20%"
+            outerRadius="40%"
             fill="#8884d8"
             paddingAngle={5}
             dataKey="value"
