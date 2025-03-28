@@ -4,12 +4,12 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import './VisitorCounter.css';
 
 const VisitorCounter: React.FC = () => {
-  const [count, setCount] = useState<number>(0);
+  const [count, setCount] = useState<number>(10);
 
   useEffect(() => {
     // Abrufen des aktuellen Zählerwerts aus dem lokalen Speicher oder Server (Beispiel)
     const storedCount = localStorage.getItem('visitorCount');
-    setCount(storedCount ? parseInt(storedCount, 10) : 0);
+    setCount(storedCount ? parseInt(storedCount, 20) : 0);
 
     // Erhöhen des Zählerwerts und Speichern
     const newCount = count + 1;

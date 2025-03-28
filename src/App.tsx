@@ -208,7 +208,7 @@ const App: React.FC = () => {
           </div>
         )} 
         </div>
-         {/* <VisitorCounter />  */}
+         <VisitorCounter />
     </div>
   );
 };
