@@ -10,7 +10,6 @@ const VisitorCounter: React.FC = () => {
     // Abrufen des aktuellen Zählerwerts aus dem lokalen Speicher oder Server (Beispiel)
     const storedCount = localStorage.getItem('visitorCount');
     setCount(storedCount ? parseInt(storedCount, 20) : 0);
-
     // Erhöhen des Zählerwerts und Speichern
     const newCount = count + 1;
     localStorage.setItem('visitorCount', newCount.toString());
@@ -24,5 +23,4 @@ const VisitorCounter: React.FC = () => {
     </div>
   );
 };
-
 export default VisitorCounter;

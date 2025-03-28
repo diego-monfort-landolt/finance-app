@@ -31,7 +31,6 @@ const PercentageChart: React.FC<PercentageChartProps> = ({ transactions }) => {
   const totalExpenses = expenseTransactions.reduce((acc, t) => acc + t.amount, 0);
   const total = totalIncome + Math.abs(totalExpenses);
   const safeTotal = total === 0 ? 1 : total; // Zur Vermeidung einer Division durch 0
-
   // Daten für das Diagramm
   const data = [
     ...incomeTransactions.map(t => ({
@@ -50,12 +49,10 @@ const PercentageChart: React.FC<PercentageChartProps> = ({ transactions }) => {
       type: 'wish list'
     }))
   ];
-
   // Definierte Farben: Einnahmen in Grün, sonst Rot
   const COLORS = data.map(entry => 
     entry.type === 'income' ? '#28a745' : '#dc3545'
   );
-
   // Entfernt eine Transaktion aus dem lokalen Zustand
   const removeTransaction = (id: number) => {
     setTransactionList(prev => prev.filter(t => t.id !== id));
@@ -154,5 +151,4 @@ const PercentageChart: React.FC<PercentageChartProps> = ({ transactions }) => {
     </div>
   );
 };
-
 export default PercentageChart;

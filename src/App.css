@@ -106,12 +106,6 @@ h1 {
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
   outline: none;
 }
-
-
-
-
-
-
 /* Fokus-Effekt für den Dark-Mode-Toggle */
 .dark-mode-toggle:focus {
   outline: none;
