@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon, faFileExport } from '@fortawesome/free-solid-svg-icons';
 import { exportToCSV } from './components/ExportCSV';
 import Notification from './components/Notification';
+import VisitorCounter from './components/VisitorCounter';
 
 export interface Transaction {
   id: number;
@@ -207,6 +208,7 @@ const App: React.FC = () => {
           </div>
         )} 
         </div>
+        <VisitorCounter />
     </div>
   );
 };
