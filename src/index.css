@@ -1,8 +1,14 @@
 body {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;
-  box-sizing: border-box; 
+  font-family: Arial, sans-serif;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  text-align: center;
+  background-color: #070707b6;
+  box-sizing: border-box;  
 }
 .App {
   width: 100%;
