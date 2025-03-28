@@ -90,8 +90,8 @@ h1 {
 .dark-mode-toggle {
   position: fixed;
   bottom: 10px;
-  right: 10px;
-  background: rgba(255, 255, 255, 0.8);
+  right: 30px;
+  background: rgba(255, 255, 255, 0.226);
   border: 1px solid #ccc;
   color: #333;
   font-size: 24px;
@@ -105,21 +105,9 @@ h1 {
   padding: 0; /* Entfernt unerwünschte Innenabstände */
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
   outline: none;
-  transition: background 0.1s, transform 0.1s;
 }
 
-.dark-mode-toggle:hover {
-  background: rgba(0, 0, 0, 0.8);
-  color: white;
-  transform: scale(1.1);
-}
-@media (max-width: 600px) {
-  .dark-mode-toggle {
-    width: 40px;
-    height: 40px;
-    font-size: 20px;
-  }
-}
+
 
 
 
