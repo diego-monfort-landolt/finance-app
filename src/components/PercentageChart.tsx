@@ -79,7 +79,7 @@ const PercentageChart: React.FC<PercentageChartProps> = ({ transactions }) => {
             cx="50%"
             cy="50%"
             innerRadius="20%"
-            outerRadius="40%"
+            outerRadius="30%"
             fill="#8884d8"
             paddingAngle={5}
             dataKey="value"
