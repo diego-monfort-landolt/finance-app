@@ -65,7 +65,8 @@ const PercentageChart: React.FC<PercentageChartProps> = ({ transactions }) => {
         backgroundColor: '#f0f0f0',
         padding: '20px',
         borderRadius: '10px',
-        boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
+        boxShadow: '0 0 10px red',
+        border: '1px solid #000',
         width: '100%',
         maxWidth: '800px', // Erlaubt einen größeren Container, wenn der Bildschirm breit genug ist
         margin: '20px auto'
