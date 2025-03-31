@@ -10,13 +10,10 @@ const VisitorCounter: React.FC = () => {
     // Abrufen des gespeicherten Zählerwerts aus LocalStorage
     const storedCount = localStorage.getItem('visitorCount');
     const currentCount = storedCount ? parseInt(storedCount, 10) : 0;
-
     // Neuer Zählerwert: bestehender Wert + 1
     const newCount = currentCount + 1;
-
     // Speichern des neuen Zählerwerts in LocalStorage
     localStorage.setItem('visitorCount', newCount.toString());
-
     // Setzen des Zählerwerts im Zustand (State)
     setCount(newCount);
   }, []); // Wird nur einmal beim Laden der Komponente ausgeführt
