@@ -14,6 +14,7 @@ export interface Transaction {
   type: 'income' | 'expense';
   comment: string;
 }
+
 const App: React.FC = () => {
   // Zustand für Transaktionen, initialisiert mit gespeicherten Daten aus dem lokalen Speicher
   const [transactions, setTransactions] = useState<Transaction[]>(() => {
@@ -146,7 +147,8 @@ const App: React.FC = () => {
           onClick={resetTransactions} 
           style={{ 
             marginTop: '10px', 
-            backgroundColor: 'red' 
+            backgroundColor: 'red' ,
+            boxShadow: '0 4px 8px #000',
             }}
             >
           Alle Transaktionen zurücksetzen
@@ -155,7 +157,8 @@ const App: React.FC = () => {
           onClick={analyzeFinances} 
           style={{ 
             marginTop: '10px', 
-            backgroundColor: 'green' 
+            backgroundColor: 'green' ,
+            boxShadow: '0 4px 8px #000',
             }}
             >
             Finanzen analysieren
@@ -169,7 +172,8 @@ const App: React.FC = () => {
             padding: '10px',
             borderRadius: '8px', 
             backgroundColor: 'blue', 
-            color: 'white' 
+            color: 'white' ,
+            boxShadow: '0 4px 8px #000',
             }}> 
           <FontAwesomeIcon icon={faFileExport} /> 
           Exportieren        

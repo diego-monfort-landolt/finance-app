@@ -25,23 +25,23 @@ h1 {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #000000;
   border-radius: 4px;
   box-sizing: border-box;
 }
 /* Stile für den Button innerhalb der Eingabegruppe */
 .input-group button {
   background-color: blue;
-  box-shadow: 0 0 7px #4f4f4f;
   color: white;
   border: none;
   cursor: pointer;
   margin-top: 10px;
+  box-shadow: '0 4px 8px #000',
 }
 /* Hover-Effekt für den Button innerhalb der Eingabegruppe */
 .input-group button:hover {
   background-color: darkblue;
-  box-shadow: 0 0 7px #4f4f4f;
+  box-shadow: '0 4px 8px #000',
 }
 /* Stile für den Diagramm-Container */
 .chart-container {
