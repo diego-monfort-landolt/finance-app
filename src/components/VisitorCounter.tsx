@@ -4,19 +4,12 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import './VisitorCounter.css';
 
 const VisitorCounter: React.FC = () => {
-  const [count, setCount] = useState<number>(0);
+  const [count, setCount] = useState<number>(10);
 
   useEffect(() => {
-    // Abrufen des gespeicherten Zählerwerts aus LocalStorage
-    const storedCount = localStorage.getItem('visitorCount');
-    const currentCount = storedCount ? parseInt(storedCount, 10) : 0;
-    // Neuer Zählerwert: bestehender Wert + 1
-    const newCount = currentCount + 1;
-    // Speichern des neuen Zählerwerts in LocalStorage
-    localStorage.setItem('visitorCount', newCount.toString());
-    // Setzen des Zählerwerts im Zustand (State)
-    setCount(newCount);
-  }, []); // Wird nur einmal beim Laden der Komponente ausgeführt
+    // Erhöhe den Besucherzähler nur während der Komponenteninitalisierung
+    setCount(prevCount => prevCount + 1);
+  }, []);
 
   return (
     <div className="visitor-counter">
@@ -25,4 +18,5 @@ const VisitorCounter: React.FC = () => {
     </div>
   );
 };
+
 export default VisitorCounter;
