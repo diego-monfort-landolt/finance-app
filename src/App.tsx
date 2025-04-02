@@ -34,6 +34,10 @@ const App: React.FC = () => {
   const totalIncome = transactions.filter(t => t.type === 'income').reduce((acc, t) => acc + t.amount, 0);
   const totalExpenses = transactions.filter(t => t.type === 'expense').reduce((acc, t) => acc + t.amount, 0);
   const balance = totalIncome - totalExpenses;
+  // Mouse Hoover test
+  const [hoverEffect, setHoverEffect] = useState<string>("");
+  const [hoverEffect1, setHoverEffect1] = useState<string>("");
+  const [hoverEffect2, setHoverEffect2] = useState<string>("");
   // Effekt, um Transaktionen im lokalen Speicher zu speichern, wenn sich die Transaktionen ändern
   useEffect(() => {
     localStorage.setItem('transactions', JSON.stringify(transactions));
@@ -145,9 +149,11 @@ const App: React.FC = () => {
             ))}
           <button 
           onClick={resetTransactions} 
+          onMouseEnter={() => setHoverEffect("darkred")}
+          onMouseLeave={() => setHoverEffect("red")}
           style={{ 
             marginTop: '10px', 
-            backgroundColor: 'red' ,
+            backgroundColor: hoverEffect || 'red' ,
             boxShadow: '0 4px 8px #000',
             }}
             >
@@ -155,9 +161,11 @@ const App: React.FC = () => {
           </button>
           <button 
           onClick={analyzeFinances} 
+          onMouseEnter={() => setHoverEffect1("green")}
+          onMouseLeave={() => setHoverEffect1("darkGreen")}
           style={{ 
             marginTop: '10px', 
-            backgroundColor: 'green' ,
+            backgroundColor: hoverEffect1 || 'green' ,
             boxShadow: '0 4px 8px #000',
             }}
             >
@@ -166,12 +174,14 @@ const App: React.FC = () => {
           <button 
           className="export-button"
           onClick={() => exportToCSV(transactions)} 
+          onMouseEnter={() => setHoverEffect2("darkBlue")}
+          onMouseLeave={() => setHoverEffect2("blue")}
           style={{ 
             marginTop: '10px', 
             marginLeft: 'auto', 
             padding: '10px',
             borderRadius: '8px', 
-            backgroundColor: 'blue', 
+            backgroundColor: hoverEffect2 ||'blue', 
             color: 'white' ,
             boxShadow: '0 4px 8px #000',
             }}> 
