@@ -89,7 +89,7 @@ h1 {
 /* Hier Startet der Style des dunklen Modus */
 .dark-mode-toggle {
   position: fixed;
-  bottom: 10px;
+  bottom: 20px;
   right: 30px;
   background: rgba(255, 255, 255, 0.226);
   border: 1px solid #ccc;
