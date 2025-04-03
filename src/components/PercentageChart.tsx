@@ -143,7 +143,7 @@ const PercentageChart: React.FC<PercentageChartProps> = ({ transactions }) => {
                   border: 'none'
                 }}
               >
-                Entfernen
+              Entfernen
               </button>
             </li>
           ))}
