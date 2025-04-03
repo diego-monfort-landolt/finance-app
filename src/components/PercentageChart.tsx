@@ -13,7 +13,6 @@ interface Transaction {
 interface PercentageChartProps {
   transactions: Transaction[];
 }
-
 const PercentageChart: React.FC<PercentageChartProps> = ({ transactions }) => {
   // Lokaler Zustand, synchronisiert mit den übergebenen Transaktionen
   const [transactionList, setTransactionList] = useState<Transaction[]>(transactions);
@@ -86,10 +85,15 @@ const PercentageChart: React.FC<PercentageChartProps> = ({ transactions }) => {
             dataKey="value"
           >
             {data.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+              <Cell key={`cell-${index}`} 
+              fill={COLORS[index % COLORS.length]} 
+              />
             ))}
           </Pie>
-          <Tooltip formatter={(value: number) => `${value} €`} />
+          <Tooltip 
+          formatter={(value: number) => `${value} €`} 
+          />
+
         </PieChart>
       </ResponsiveContainer>
       <div
