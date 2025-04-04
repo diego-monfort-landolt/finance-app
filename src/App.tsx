@@ -157,7 +157,7 @@ const App: React.FC = () => {
             boxShadow: '0 4px 8px #000',
             }}
             >
-          Alle Transaktionen zurücksetzen
+          Alle Transaktionen Zurücksetzen
           </button>
           <button 
           onClick={analyzeFinances} 
