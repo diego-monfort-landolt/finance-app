@@ -56,7 +56,6 @@ const PercentageChart: React.FC<PercentageChartProps> = ({ transactions }) => {
   const removeTransaction = (id: number) => {
     setTransactionList(prev => prev.filter(t => t.id !== id));
   };
-
   return (
     <div
       className="chart-container"
