@@ -5,7 +5,6 @@ import './VisitorCounter.css';
 
 const VisitorCounter: React.FC = () => {
   const [count, setCount] = useState<number>(10);
-
   useEffect(() => {
     // Erhöhe den Besucherzähler nur während der Komponenteninitalisierung
     setCount(prevCount => prevCount + 1);
@@ -18,5 +17,4 @@ const VisitorCounter: React.FC = () => {
     </div>
   );
 };
-
 export default VisitorCounter;
