@@ -93,7 +93,6 @@ const PercentageChart: React.FC<PercentageChartProps> = ({ transactions }) => {
           <Tooltip 
           formatter={(value: number) => `${value} €`} 
           />
-
         </PieChart>
       </ResponsiveContainer>
       <div
