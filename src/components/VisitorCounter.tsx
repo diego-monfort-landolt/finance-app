@@ -5,11 +5,9 @@ import './VisitorCounter.css';
 
 const VisitorCounter: React.FC = () => {
   const [count, setCount] = useState<number>(10);
-  useEffect(() => {
-    // Erhöhe den Besucherzähler nur während der Komponenteninitalisierung
+  useEffect(() => { // Erhöhe den Besucherzähler nur während der Komponenteninitalisierung
     setCount(prevCount => prevCount + 1);
   }, []);
-
   return (
     <div className="visitor-counter">
       <FontAwesomeIcon icon={faUser} className="icon" />
