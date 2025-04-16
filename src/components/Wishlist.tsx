@@ -15,7 +15,6 @@ interface WishlistProps {
 const Wishlist: React.FC<WishlistProps> = ({ balance, wishes, setWishes }) => {
   const [description, setDescription] = useState('');
   const [amount, setAmount] = useState<number | undefined>(undefined);
-
   const addWish = () => {
     if (description && amount !== undefined && amount > 0) {
       const newWish = { id: Date.now(), description, amount, fulfilled: false };

@@ -14,7 +14,6 @@ export interface Transaction {
   type: 'income' | 'expense';
   comment: string;
 }
-
 const App: React.FC = () => {
   // Zustand für Transaktionen, initialisiert mit gespeicherten Daten aus dem lokalen Speicher
   const [transactions, setTransactions] = useState<Transaction[]>(() => {
