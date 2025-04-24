@@ -8,7 +8,6 @@ interface Transaction {
   amount: number;
   type: 'income' | 'expense' | 'wish list';
 }
-
 // Props für die PercentageChart-Komponente
 interface PercentageChartProps {
   transactions: Transaction[];
@@ -16,16 +15,13 @@ interface PercentageChartProps {
 const PercentageChart: React.FC<PercentageChartProps> = ({ transactions }) => {
   // Lokaler Zustand, synchronisiert mit den übergebenen Transaktionen
   const [transactionList, setTransactionList] = useState<Transaction[]>(transactions);
-
   useEffect(() => {
     setTransactionList(transactions);
   }, [transactions]);
-
   // Filtere nach Transaktionstyp
   const incomeTransactions = transactionList.filter(t => t.type === 'income');
   const expenseTransactions = transactionList.filter(t => t.type === 'expense');
   const wishlistTransactions = transactionList.filter(t => t.type === 'wish list');
-
   const totalIncome = incomeTransactions.reduce((acc, t) => acc + t.amount, 0);
   const totalExpenses = expenseTransactions.reduce((acc, t) => acc + t.amount, 0);
   const total = totalIncome + Math.abs(totalExpenses);
